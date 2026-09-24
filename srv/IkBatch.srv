@@ -8,6 +8,10 @@ string[] tool_frames
 # problem-major, each with its own joint_states_valid entry, so the caller can
 # choose by its own criterion (e.g. margin from the joint limits).
 int32 return_seeds 0
+# Configuration the solver starts from (cuRobo's current_state, used as one of
+# the seeds), for every problem: the same field TrajectoryGeneration calls
+# start_pose. Empty -> unchanged (the solver's own seeds only).
+sensor_msgs/JointState start_pose
 
 ---
 
