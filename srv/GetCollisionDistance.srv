@@ -1,3 +1,11 @@
+# Configurations to evaluate. Empty -> the robot's current configuration
+# (unchanged). Non-empty -> each of them, e.g. every waypoint of a trajectory.
+sensor_msgs/JointState[] trajectory
 ---
+# Per collision sphere, config-major when trajectory is set:
+# data[i * nb_sphere + s] is sphere s at trajectory[i].
 float32[] data
+# Spheres per configuration.
 int8 nb_sphere
+# Configurations in data: 1 when trajectory is empty.
+int32 nb_config

@@ -2,6 +2,11 @@ sensor_msgs/JointState start_pose
 
 geometry_msgs/Pose target_pose
 geometry_msgs/Pose[] target_poses  # Single pose or multiple waypoints for multi-point planning
+# One goal per tool frame (e.g. dual-arm). Empty -> unchanged: the poses above
+# are for the robot's first tool frame. Non-empty -> target_poses[k] is the goal
+# of target_tool_frames[k], all reached by ONE trajectory. List every tool frame
+# of the robot: a frame that must not move gets its current pose.
+string[] target_tool_frames
 float64[] target_joint_positions  # Target joint configuration for joint-space planning
 int8[] trajectory_constraints # [theta_x, theta_y, theta_z, x, y, z]
 int8[] trajectories_contraints # Flattened: [theta_x0, theta_y0, theta_z0, x0, y0, z0, theta_x1, theta_y1, theta_z1, x1, y1, z1, ...]

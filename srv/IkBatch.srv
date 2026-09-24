@@ -1,4 +1,13 @@
 geometry_msgs/Pose[] poses
+# Tool frames the poses are goals for. Empty -> one IK problem per pose, for the
+# robot's first tool frame (unchanged). Non-empty -> one IK problem per group of
+# len(tool_frames) consecutive poses: poses[j * len(tool_frames) + k] is the goal
+# of tool_frames[k] in problem j (a dual-arm IK is one problem with two poses).
+string[] tool_frames
+# Solutions per problem. 0 -> one (unchanged). N -> the N seeds the solver ran,
+# problem-major, each with its own joint_states_valid entry, so the caller can
+# choose by its own criterion (e.g. margin from the joint limits).
+int32 return_seeds 0
 
 ---
 

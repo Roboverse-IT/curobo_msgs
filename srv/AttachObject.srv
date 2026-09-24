@@ -17,6 +17,23 @@ std_msgs/Header header
 string mesh_file_path ""
 geometry_msgs/Pose pose
 geometry_msgs/Vector3 dimensions
+# A scene obstacle (added with add_object) to attach, by name. Non-empty -> that
+# obstacle's own geometry is attached and the obstacle is disabled in the world;
+# type, header, mesh_file_path, pose and dimensions are ignored. Empty -> the
+# payload described by the fields above.
+string object_name ""
+# Robot link the payload is attached to. Empty -> "attached_object", the link a
+# single-arm robot declares; a dual-arm robot declares one link per arm.
+string attach_link ""
+# Collision-sphere fit. FIT_DEFAULT -> the library default (MorphIt).
+int8 FIT_DEFAULT=0
+int8 FIT_SURFACE=1
+int8 FIT_VOXEL=2
+int8 FIT_MORPHIT=3
+int8 sphere_fit_type 0
+# Number of spheres. 0 -> estimated from the geometry and capped at the attach
+# link's sphere budget (unchanged).
+int32 num_spheres 0
 ---
 # Response fields
 bool success

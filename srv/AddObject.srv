@@ -4,11 +4,14 @@ int8 SPHERE=1
 int8 CAPSULE=2
 int8 CYLINDER=3
 int8 MESH=4
+# A USD file (mesh_file_path) whose first mesh prim becomes the obstacle.
+# dimensions is its scale, as for MESH.
+int8 USD=5
 
 # Request fields
 int8 type
 string name
-# Only used for mesh objects, file path must be absolute
+# Only used for MESH and USD objects, file path must be absolute
 string mesh_file_path ""
 geometry_msgs/Pose pose
 geometry_msgs/Vector3 dimensions

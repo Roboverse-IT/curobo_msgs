@@ -4,6 +4,7 @@
 sensor_msgs/JointState start_pose
 geometry_msgs/Pose target_pose
 geometry_msgs/Pose[] target_poses
+string[] target_tool_frames  # as in TrajectoryGeneration.srv
 float64[] target_joint_positions
 bool allow_cached true   # reuse a matching, non-expired pre-planned trajectory
 ---

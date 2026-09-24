@@ -1,4 +1,8 @@
 sensor_msgs/JointState[] joint_states
+# Tool frames to report. Empty -> the robot's first tool frame, one pose per
+# joint state (unchanged). Non-empty -> len(tool_frames) poses per joint state,
+# config-major: poses[i * len(tool_frames) + k] is tool_frames[k] at joint_states[i].
+string[] tool_frames
 
 ---
 geometry_msgs/Pose[] poses
