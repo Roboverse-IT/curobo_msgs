@@ -1,0 +1,33 @@
+# Goal — native cuRobo v2 grasp pipeline (goalset -> approach -> grasp -> lift).
+# Mirrors MotionPlanner.plan_grasp args. The planner picks the best reachable
+# candidate from the goalset and plans the three phases around it.
+sensor_msgs/JointState start_pose          # optional; robot current pose if empty
+geometry_msgs/Pose[] grasp_candidates       # goalset of candidate grasp poses (>=1)
+string  approach_axis "z"                    # tool/world axis to approach along
+float64 approach_offset -0.15                # signed offset (m) for the approach pose
+bool    approach_in_tool_frame true
+string  lift_axis "z"
+float64 lift_offset -0.15
+bool    lift_in_tool_frame true
+bool    plan_approach_to_grasp true          # plan the linear approach->grasp leg
+bool    plan_grasp_to_lift true              # plan the linear grasp->lift leg
+string  attach_object_name ""                # scene obstacle to attach at grasp (empty = none)
+bool    execute true                         # plan + execute, or plan only
+# Slows the returned and executed legs down: times divided by this factor,
+# velocities multiplied by it. 0 -> as planned.
+float64 time_dilation_factor 0.0
+---
+bool success
+string message
+bool approach_success
+bool grasp_success
+bool lift_success
+sensor_msgs/JointState[] approach_trajectory
+sensor_msgs/JointState[] grasp_trajectory
+sensor_msgs/JointState[] lift_trajectory
+float64 dt
+int32 goal_index                             # the candidate the legs reach (valid on success)
+---
+# Feedback — carried only by the action feedback (no status topic).
+string  phase            # PLANNING | APPROACH | GRASP | ATTACH | LIFT | DONE | FAILED
+float32 progression      # [0..1] over the whole grasp sequence
