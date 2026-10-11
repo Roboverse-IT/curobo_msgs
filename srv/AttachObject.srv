@@ -34,6 +34,9 @@ int8 sphere_fit_type 0
 # Number of spheres. 0 -> estimated from the geometry and capped at the attach
 # link's sphere budget (unchanged).
 int32 num_spheres 0
+# Robot configuration the payload is attached at, in the order of the planner's
+# joint_names. Empty -> the robot's current configuration (unchanged).
+sensor_msgs/JointState start_pose
 ---
 # Response fields
 bool success
