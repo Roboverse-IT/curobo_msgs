@@ -3,6 +3,14 @@
 # candidate from the goalset and plans the three phases around it.
 sensor_msgs/JointState start_pose          # optional; robot current pose if empty
 geometry_msgs/Pose[] grasp_candidates       # goalset of candidate grasp poses (>=1)
+# Tool frames that grasp (e.g. dual-arm). Empty -> the robot's first tool frame,
+# as before. Non-empty -> grasp_candidates holds one block of G candidates per
+# listed frame, in this order; candidate g of every listed frame is reached
+# together.
+string[] grasp_tool_frames
+# Tool frames that hold, as in TrajectoryGeneration.srv. With grasp_tool_frames,
+# every tool frame of the robot is named once, in one list or the other.
+string[] hold_tool_frames
 string  approach_axis "z"                    # tool/world axis to approach along
 float64 approach_offset -0.15                # signed offset (m) for the approach pose
 bool    approach_in_tool_frame true

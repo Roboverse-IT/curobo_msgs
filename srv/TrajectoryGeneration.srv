@@ -7,6 +7,11 @@ geometry_msgs/Pose[] target_poses  # Single pose or multiple waypoints for multi
 # of target_tool_frames[k], all reached by ONE trajectory. List every tool frame
 # of the robot: a frame that must not move gets its current pose.
 string[] target_tool_frames
+# Tool frames that hold (e.g. the other arm of a dual-arm robot): their pose and
+# joints stay as in start_pose along the whole trajectory. Empty -> none. With
+# target_tool_frames, every tool frame of the robot is named once, in one list or
+# the other.
+string[] hold_tool_frames
 float64[] target_joint_positions  # Target joint configuration for joint-space planning
 int8[] trajectory_constraints # [theta_x, theta_y, theta_z, x, y, z]
 int8[] trajectories_contraints # Flattened: [theta_x0, theta_y0, theta_z0, x0, y0, z0, theta_x1, theta_y1, theta_z1, x1, y1, z1, ...]
