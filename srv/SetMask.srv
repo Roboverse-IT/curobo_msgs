@@ -10,7 +10,8 @@ int8 type
 string name
 # TF frame the pose is expressed in; "" => robot base frame (static mask)
 string frame_id ""
-# Only used for mesh masks, file path must be absolute
+# Only used for mesh masks, an absolute file path or a
+# package://<package>/<file> URI
 string mesh_file_path ""
 geometry_msgs/Pose pose
 geometry_msgs/Vector3 dimensions

@@ -13,7 +13,8 @@ int8 type
 # header.stamp is IGNORED: the transform is taken at call time, to match the
 # joint configuration the attachment is computed from.
 std_msgs/Header header
-# Only used for mesh payloads, file path must be absolute
+# Only used for mesh payloads, an absolute file path or a
+# package://<package>/<file> URI
 string mesh_file_path ""
 geometry_msgs/Pose pose
 geometry_msgs/Vector3 dimensions
